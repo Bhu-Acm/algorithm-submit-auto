@@ -9,6 +9,7 @@ def get_all_question_ids():
     all_question_ids = []
 
     while True:
+        print(f"当前页面为:{page}")
         # 构造请求参数
         params = {
             "page": page,
@@ -51,11 +52,11 @@ def get_all_question_ids():
             print(f"暂停5秒后继续爬取下一页...")
             time.sleep(5)
 
-            page += 1  # 下一页
-
         except requests.exceptions.RequestException as e:
             print(f"请求失败: {e}")
             break
+
+        page += 1  # 下一页
 
     return all_question_ids
 
@@ -70,5 +71,3 @@ if __name__ == "__main__":
     print("\n==================== 爬取完成 ====================")
     print(f"共获取到 {len(question_ids)} 个questionId")
     print(f"总耗时: {round(time.time() - start_time, 2)} 秒")
-    # 可选：打印所有questionId（如需保存可写入文件）
-    # print("所有questionId列表：", question_ids)

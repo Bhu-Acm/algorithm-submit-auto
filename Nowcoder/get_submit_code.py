@@ -40,8 +40,8 @@ LANGUAGE_MAP = {
 }
 
 def get_problem_page_info(problem_id):
-    """
-    从/acm/problem/{problemid}页面提取window.pageInfo数据
+    f"""
+    从https://ac.nowcoder.com/acm/problem/{problem_id}页面提取window.pageInfo数据
     :param problem_id: 题目ID
     :return: pageInfo字典或None
     """
@@ -234,6 +234,8 @@ def submit_code(code_info, page_info):
     # 获取语言信息
     language = code_info.get("language", "Java")
     lang_info = LANGUAGE_MAP.get(language, ["Java"])
+
+    # 获取代码
     code = code_info.get("code", "")
 
     # 构建表单数据
